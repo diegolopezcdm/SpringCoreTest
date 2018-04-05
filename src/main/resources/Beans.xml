@@ -1,0 +1,55 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:annotation-config />
+    <context:component-scan base-package="pe" />
+
+    <!--
+    <bean id = "helloWorld" class = "HelloWorld">
+        <property name = "message" value = "Hello World!"/>
+    </bean> -->
+
+    <context:property-placeholder location="system.properties" />
+
+    <bean id = "car1" class = "pe.com.dl.Car">
+        <property name="name" value="First Car"/>
+        <property name="numberOfTires" value="4"/>
+    </bean>
+
+    <bean id = "car2" class = "pe.com.dl.Car">
+        <constructor-arg name="name" value="Second Car"/>
+        <constructor-arg name="numberOfTires" value="4"/>
+    </bean>
+
+    <bean id = "person1" name="personJuan" class = "pe.com.dl.Person" >
+        <constructor-arg name = "firstName" value = "Juan"/>
+        <constructor-arg name = "lastName" value = "Lopez"/>
+        <constructor-arg name = "vehicle" ref="car1" />
+    </bean>
+
+   <bean id = "person2" name="personDiego" class = "pe.com.dl.Person">
+       <constructor-arg name = "firstName" value = "Juan"/>
+       <constructor-arg name = "lastName" value = "Lopez"/>
+       <constructor-arg name = "vehicle" ref="car2" />
+   </bean>
+
+    <beans profile="dev">
+        <bean id = "helloWorld" class = "HelloWorld">
+            <property name = "message" value = "Hello World! dev"/>
+        </bean>
+    </beans>
+
+    <beans profile="prod">
+        <bean id = "helloWorld" class = "HelloWorld">
+            <property name = "message" value = "Hello World! prod"/>
+        </bean>
+    </beans>
+
+</beans>
