@@ -20,15 +20,15 @@
 
     <bean id = "car1" class = "pe.com.dl.Car">
         <property name="name" value="First Car"/>
-        <property name="numberOfTires" value="4"/>
+        <property name="numberOfTires" value="${numberOfTires}"/>
     </bean>
 
     <bean id = "car2" class = "pe.com.dl.Car">
         <constructor-arg name="name" value="Second Car"/>
-        <constructor-arg name="numberOfTires" value="4"/>
+        <property name="numberOfTires" value="${numberOfTires}"/>
     </bean>
 
-    <bean id = "person1" name="personJuan" class = "pe.com.dl.Person" >
+    <bean id = "person1" name="personJuan" class = "pe.com.dl.Person" primary="true">
         <constructor-arg name = "firstName" value = "Juan"/>
         <constructor-arg name = "lastName" value = "Lopez"/>
         <constructor-arg name = "vehicle" ref="car1" />
@@ -39,6 +39,11 @@
        <constructor-arg name = "lastName" value = "Lopez"/>
        <constructor-arg name = "vehicle" ref="car2" />
    </bean>
+
+    <bean id = "bike" class = "pe.com.dl.Bike">
+        <constructor-arg name="name" value="First Bike"/>
+    </bean>
+
 
     <beans profile="dev">
         <bean id = "helloWorld" class = "HelloWorld">

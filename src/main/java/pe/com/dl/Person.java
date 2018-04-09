@@ -1,18 +1,7 @@
 package pe.com.dl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 import java.util.Date;
 
-
-@Component
-@Primary
-@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Person {
 
     private String firstName;
@@ -21,8 +10,7 @@ public class Person {
     private Date createdDate = new Date();
     private Date updatedDate;
 
-    @Autowired
-    public Person(@Value("Diego") String firstName, @Value("Lopez") String lastName, Vehicle vehicle) {
+    public Person(String firstName, String lastName, Vehicle vehicle) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.vehicle = vehicle;

@@ -9,9 +9,8 @@ public class Car extends Vehicle {
     }
 
 
-    public Car(String name, Integer numberOfTires) {
+    public Car(String name) {
         super(name);
-        this.numberOfTires = numberOfTires;
     }
 
     public void go() {

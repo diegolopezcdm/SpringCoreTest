@@ -22,14 +22,10 @@ public class MainApp {
 
         System.out.println("=========== PERSONS ======");
 
-        Person person = (Person) context.getBean("person");
-        person.setUpdatedDate(new Date());
-        System.out.println(person);
-
         Person person2 = (Person) context.getBean(Person.class);
         System.out.println(person2);
 
-        Person juan = (Person) context.getBean("person1");
+        Person juan = (Person) context.getBean("person2");
         System.out.println(juan);
 
         Person diego = (Person) context.getBean("personDiego");
