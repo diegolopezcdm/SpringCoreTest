@@ -1,23 +1,23 @@
 
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import pe.HelloWorld;
 import pe.com.dl.Bike;
 import pe.com.dl.Car;
 import pe.com.dl.Person;
-
-import java.util.Date;
+import pe.com.dl.configuration.AppConfig;
 
 public class MainApp {
     public static void main(String[] args) {
 
-        System.setProperty("spring.profiles.active", "prod");
+        System.setProperty("spring.profiles.active", "dev");
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         System.out.println("reading enviroment: "+context.getEnvironment().getProperty("spring.profiles.active"));
 
-        HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+        HelloWorld obj = (HelloWorld) context.getBean(HelloWorld.class);
         obj.getMessage();
 
         System.out.println("=========== PERSONS ======");
@@ -25,10 +25,10 @@ public class MainApp {
         Person person2 = (Person) context.getBean(Person.class);
         System.out.println(person2);
 
-        Person juan = (Person) context.getBean("person2");
+        Person juan = (Person) context.getBean("person1");
         System.out.println(juan);
 
-        Person diego = (Person) context.getBean("personDiego");
+        Person diego = (Person) context.getBean("person2");
         System.out.println(diego);
 
         System.out.println("");

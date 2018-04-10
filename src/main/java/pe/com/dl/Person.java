@@ -1,7 +1,14 @@
 package pe.com.dl;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
+@Component
+@Primary
+@Scope("prototype")
 public class Person {
 
     private String firstName;
@@ -9,6 +16,10 @@ public class Person {
     private Vehicle vehicle;
     private Date createdDate = new Date();
     private Date updatedDate;
+
+    public Person(){
+
+    }
 
     public Person(String firstName, String lastName, Vehicle vehicle) {
         this.firstName = firstName;
